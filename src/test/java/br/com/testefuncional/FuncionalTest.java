@@ -15,9 +15,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class FuncionalTest {
 
 	public static WebDriver acessaAplicacao() throws MalformedURLException {
-		//WebDriver driver = new ChromeDriver(); comunicação local
+		//WebDriver driver = new ChromeDriver(); //comunicação local
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		WebDriver driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), cap);
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.18.132:4444/wd/hub"), cap); //comunicação remota
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 
@@ -28,7 +28,7 @@ public class FuncionalTest {
 		WebDriver driver = acessaAplicacao();
 
 		try {
-			driver.navigate().to("http://localhost:8001/tasks/");
+			driver.navigate().to("http://192.168.18.132:8001/tasks/");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			// clikar no botao
 			driver.findElement(By.className("btn-outline-secondary")).click();
@@ -61,7 +61,7 @@ public class FuncionalTest {
 		WebDriver driver = acessaAplicacao();
 		try {
 
-			driver.navigate().to("http://localhost:8001/tasks/");
+			driver.navigate().to("http://192.168.18.132:8001/tasks/");
 			// clikar no botao
 			driver.findElement(By.className("btn-outline-secondary")).click();
 
